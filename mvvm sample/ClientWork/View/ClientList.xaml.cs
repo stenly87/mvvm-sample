@@ -1,5 +1,4 @@
-﻿using mvvm_sample.ClientWork.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace mvvm_sample
+namespace mvvm_sample.ClientWork.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для ClientList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ClientList : Page
     {
-        public MainWindow()
+        public ClientList()
         {
             InitializeComponent();
         }

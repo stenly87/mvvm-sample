@@ -1,4 +1,5 @@
 ﻿using mvvm_sample.ClientWork.Model;
+using mvvm_sample.ClientWork.View;
 using mvvm_sample.mvvm;
 using System;
 using System.Collections.Generic;
@@ -24,15 +25,14 @@ namespace mvvm_sample.ClientWork.ViewModel
         }
 
         public VMCommand Save { get; set; }
-        public VMCommand Add { get; set; }
 
         public ClientEditorVM()
         {
-            Add = new VMCommand(() => Client = new Client());
+            Client = EditClient.Edit;
 
             Save = new VMCommand(() =>
             {
-                System.Windows.MessageBox.Show("Выполнена команда!");
+                MainVM.ChangePage(new ClientList());
             },
             () => Client != null
             );

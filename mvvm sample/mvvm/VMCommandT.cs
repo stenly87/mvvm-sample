@@ -7,12 +7,12 @@ using System.Windows.Input;
 
 namespace mvvm_sample.mvvm
 {
-    public class VMCommand : ICommand
+    public class VMCommand<T> : ICommand
     {
-        Action action;
-        Func<bool> canExecute;
+        Action<T> action;
+        Func<object?, bool> canExecute;
 
-        public VMCommand(Action action, Func<bool> canExecute = null)
+        public VMCommand(Action<T> action, Func<object?, bool> canExecute)
         {
             this.action = action;
             this.canExecute = canExecute;
@@ -26,14 +26,12 @@ namespace mvvm_sample.mvvm
 
         public bool CanExecute(object? parameter)
         {
-            return canExecute?.Invoke() ?? true;
+            return canExecute(parameter);
         }
 
         public void Execute(object? parameter)
         {
-            action();
+            action((T)parameter);
         }
     }
-
-    
 }

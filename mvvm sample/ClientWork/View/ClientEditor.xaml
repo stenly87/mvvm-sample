@@ -13,7 +13,6 @@
         <vm:ClientEditorVM x:Key="viewModel"/>
     </Page.Resources>
     <StackPanel>
-        <Button Content="Создать клиента" Command="{Binding Add}"/>
         <Label Content="Фамилия"/>
         <TextBox DataContext="{Binding Client}" Text="{Binding LastName}"/>
         <Label Content="Дата рождения"/>
