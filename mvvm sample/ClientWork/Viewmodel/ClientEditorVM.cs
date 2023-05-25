@@ -1,4 +1,5 @@
-﻿using mvvm_sample.ClientWork.Model;
+﻿using mvvm_sample.ClientWork.DBnamespace;
+using mvvm_sample.ClientWork.Model;
 using mvvm_sample.ClientWork.View;
 using mvvm_sample.mvvm;
 using System;
@@ -26,9 +27,9 @@ namespace mvvm_sample.ClientWork.ViewModel
 
         public VMCommand Save { get; set; }
 
-        public ClientEditorVM()
+        public ClientEditorVM(DB dB)
         {
-            Client = EditClient.Edit;
+           
 
             Save = new VMCommand(() =>
             {
@@ -38,6 +39,9 @@ namespace mvvm_sample.ClientWork.ViewModel
             );
         }
 
-
+        internal override void Update()
+        {
+            Client = EditClient.Edit;
+        }
     }
 }

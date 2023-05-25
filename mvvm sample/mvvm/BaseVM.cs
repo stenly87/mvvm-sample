@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace mvvm_sample.mvvm
 {
-    public class BaseVM: INotifyPropertyChanged
+    public abstract class BaseVM: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void Signal([CallerMemberName] string prop = null)
              => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+
+        internal abstract void Update();
     }
 }

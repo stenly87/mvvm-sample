@@ -1,4 +1,5 @@
-﻿using mvvm_sample.ClientWork.View;
+﻿using mvvm_sample.ClientWork.DBnamespace;
+using mvvm_sample.ClientWork.View;
 using mvvm_sample.mvvm;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,11 @@ namespace mvvm_sample.ClientWork.ViewModel
             instance.CurrentPage = page;
         }
 
-        public MainVM()
+        internal override void Update()
+        {
+        }
+
+        public MainVM(DB dB)
         {
             instance = this;
             CurrentPage = new ClientList();

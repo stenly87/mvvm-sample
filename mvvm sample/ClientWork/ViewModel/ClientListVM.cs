@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mvvm_sample.ClientWork.DBnamespace;
 
 namespace mvvm_sample.ClientWork.ViewModel
 {
@@ -28,15 +29,14 @@ namespace mvvm_sample.ClientWork.ViewModel
             }
         }
 
-        public ClientListVM()
+        public ClientListVM(DB dB)
         {
-            Clients = new ObservableCollection<Client>(
-                ClientDB.GetInstance().LoadClients());
-
             AddClient = new VMCommand(() =>
             {
                 var client = new Client();
-                Clients.Add(client);
+                //Clients.Add(client);
+                EditClient.Execute(client);
+
                 ClientDB.GetInstance().Add(client);
             });
 
@@ -46,7 +46,12 @@ namespace mvvm_sample.ClientWork.ViewModel
                 MainVM.ChangePage(new ClientEditor());
             }, 
             s => s != null);
+        }
 
+        internal override void Update()
+        {
+            Clients = new ObservableCollection<Client>(
+                ClientDB.GetInstance().LoadClients());
         }
     }
 }
