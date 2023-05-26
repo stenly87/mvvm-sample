@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:mvvm_sample.ClientWork.View"
       xmlns:mvvm="clr-namespace:mvvm_sample.mvvm"
       xmlns:vm="clr-namespace:mvvm_sample.ClientWork.ViewModel"
+      xmlns:conv="clr-namespace:mvvm_sample.ClientWork.Converter"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{mvvm:ViewModelResolver VMType=vm:ClientEditorVM}"
@@ -20,6 +21,10 @@
             <Label Content="Дата рождения"/>
             <DatePicker SelectedDate="{Binding Birthday}"/>
         </StackPanel>
+        <TextBox x:Name="text1" 
+                 Background="{Binding Text,
+                    ElementName=text1,
+                    Converter={conv:TextToBrushConverter}}"/>
         <Button Content="Сохранить" Command="{Binding Save}"/>
     </StackPanel>
 </Page>
